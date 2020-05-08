@@ -41,3 +41,6 @@ Locally runing directly:
 APP_ENV=test bundle exec rspec       
 ```
 
+--
+
+[DockerHub](https://hub.docker.com/repository/docker/jorgedjr21/account_movement_challenge)
