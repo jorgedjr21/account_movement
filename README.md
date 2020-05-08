@@ -1,6 +1,7 @@
 # ACCOUNT MOVEMENT challange
 
 An application that reads the csv files and process the account transactions.
+
 **Developed with Ruby 2.6.6**
 
 ## How to Run
@@ -22,7 +23,7 @@ docker run --rm jorgedjr21/account_movement_challenge:latest
 
 ## Runing the tests
 
-Was used the lib [rspec]() to testing the app.
+Was used the lib [rspec](https://github.com/rspec/rspec) to testing the app.
 
 You can run the tests in `docker` with:
 
