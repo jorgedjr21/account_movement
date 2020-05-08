@@ -2,7 +2,7 @@
 
 An application that reads the csv files and process the account transactions.
 
-**Developed with Ruby 2.6.6**
+**Developed with Ruby 2.6**
 
 ## How to Run
 
