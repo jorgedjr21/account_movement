@@ -1,4 +1,4 @@
-require_relative 'account'
+require_relative 'bank'
 
 def process_accounts(accounts)
   processed_accounts = {}
