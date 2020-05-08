@@ -40,4 +40,46 @@ RSpec.describe Bank do
       end
     end
   end
+
+  describe '#process_accounts' do
+    context 'with loaded csv' do
+    let(:accounts) { Bank.open_csv('contas.csv')[:data] }
+
+      it 'must process them' do
+        acc = Bank.process_accounts(accounts)
+        expect(acc["123"]).to eq(13052)
+        expect(acc["10"]).to eq(-10000)
+      end
+    end
+  end
+
+  describe '#process_account_transactons' do
+    context 'with load csvs' do
+    let(:accounts) { Bank.process_accounts(Bank.open_csv('contas.csv')[:data]) }
+    let(:transactions) { Bank.open_csv('transacoes.csv','transacoes')[:data] }
+
+      it 'must process them' do
+        acc = Bank.process_account_transactons(accounts, transactions)
+        expect(acc["123"]).to eq(346800)
+        expect(acc["10"]).to eq(-10000)
+        expect(acc["11"]).to eq(2571)
+      end
+    end
+  end
+
+  describe '#final_account_balances' do
+    context 'with processed files' do
+      let(:accounts) { Bank.process_accounts(Bank.open_csv('contas.csv')[:data]) }
+      let(:transactions) { Bank.open_csv('transacoes.csv','transacoes')[:data] }
+
+      it 'must print the final result formated' do
+        acc = Bank.process_account_transactons(accounts, transactions)
+        expect { Bank.final_account_balances(acc) }.to output.to_stdout
+        expect { Bank.final_account_balances(acc) }.to output(/123,346800/).to_stdout
+        expect { Bank.final_account_balances(acc) }.to output(/456,19900/).to_stdout
+        expect { Bank.final_account_balances(acc) }.to output(/10,-10000/).to_stdout
+        expect { Bank.final_account_balances(acc) }.to output(/11,2571/).to_stdout
+      end
+    end
+  end
 end
