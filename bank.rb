@@ -13,7 +13,7 @@ class Bank
   def self.process_accounts(accounts)
     processed_accounts = {}
     accounts.each do |account|
-      print "Criando \e[1mconta #{account[0]}\e[0m com saldo inicial #{Bank.print_balance(account[1])}\n"
+      print "Criando \e[1mconta #{account[0]}\e[0m com saldo inicial #{Bank.print_balance(account[1])}\n" unless ENV["APP_ENV"] == "test"
       processed_accounts["#{account[0]}"] = account[1].to_i
     end
 
@@ -31,7 +31,7 @@ class Bank
         message += " (R$ 3.00 de multa aplicado)"
       end
 
-      print message + ", saldo: #{Bank.print_balance(accounts["#{transaction[0]}"])}\n"
+      print message + ", saldo: #{Bank.print_balance(accounts["#{transaction[0]}"])}\n" unless ENV["APP_ENV"] == "test"
     end
 
     accounts
