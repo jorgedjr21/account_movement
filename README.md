@@ -8,7 +8,9 @@ An application that reads the csv files and process the account transactions.
 
 ### Localy
 1 - Download the zip file [here](https://github.com/jorgedjr21/account_movement/archive/1.0.1.zip)
+
 2 - Extract the zip content in some folder and access it
+
 3 - Run:
 ```sh
 ruby account_movement.rb contas.csv transacoes.csv
